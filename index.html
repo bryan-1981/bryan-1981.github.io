@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bryan A Ramirez | Portfolio</title>
+  <!-- tiny chrome star as the browser tab icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 0 C54 34 66 46 100 50 C66 54 54 66 50 100 C46 66 34 54 0 50 C34 46 46 34 50 0Z' fill='%239fd0ff'/></svg>">
+  <!-- Unbounded = the wide Y2K font for your name. Orbitron = section headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Unbounded:wght@500;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SVG library: define once, reuse anywhere with <use href="#id"> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- diagonal chrome for stars/rings -->
+      <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset="0.3" stop-color="#8d9bb0"/>
+        <stop offset="0.55" stop-color="#eef3fb"/>
+        <stop offset="0.8" stop-color="#566174"/>
+        <stop offset="1" stop-color="#d5deec"/>
+      </linearGradient>
+      <!-- vertical chrome for letters: bright top, DARK horizon band in the middle, bright bottom = the classic chrome look -->
+      <linearGradient id="chromeText" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset="0.42" stop-color="#9ec3f2"/>
+        <stop offset="0.5" stop-color="#16233d"/>
+        <stop offset="0.58" stop-color="#6f9bd6"/>
+        <stop offset="1" stop-color="#eaf4ff"/>
+      </linearGradient>
+
+      <symbol id="star" viewBox="0 0 100 100">
+        <path d="M50 0 C54 34 66 46 100 50 C66 54 54 66 50 100 C46 66 34 54 0 50 C34 46 46 34 50 0Z" fill="url(#chrome)"/>
+      </symbol>
+      <symbol id="ring" viewBox="0 0 200 200">
+        <ellipse cx="100" cy="100" rx="92" ry="30" fill="none" stroke="url(#chrome)" stroke-width="5" transform="rotate(-25 100 100)"/>
+      </symbol>
+
+      <!-- THE LOGO: chrome "BR" with an orbit ring that goes behind AND in front of the letters + sparkles -->
+      <symbol id="logo" viewBox="0 0 120 120">
+        <g transform="rotate(-22 60 60)" fill="none" stroke="url(#chrome)" stroke-width="4" stroke-linecap="round">
+          <path d="M6 60 A54 18 0 0 1 114 60"/>           <!-- back half of ring (top), drawn BEFORE the letters -->
+        </g>
+        <text x="60" y="76" text-anchor="middle" font-family="Unbounded, Orbitron, Arial Black, sans-serif"
+              font-weight="900" font-size="44" fill="url(#chromeText)" stroke="#04070d" stroke-width="0.8">BR</text>
+        <g transform="rotate(-22 60 60)" fill="none" stroke="url(#chrome)" stroke-width="4.5" stroke-linecap="round">
+          <path d="M6 60 A54 18 0 0 0 114 60"/>           <!-- front half of ring (bottom), drawn AFTER = in front -->
+        </g>
+        <use href="#star" x="2" y="6" width="26" height="26"/>
+        <use href="#star" x="98" y="84" width="16" height="16"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="cursor-glow" id="glow"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <a href="#home" class="logo" aria-label="Bryan A Ramirez home"><svg viewBox="0 0 120 120"><use href="#logo"/></svg></a>
+    <nav class="pills">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#photos">Photos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- data-link="..." gets its real URL from script.js (CONFIG at the top), so you only edit ONE place -->
+  <aside class="side-links">
+    <a href="#" data-link="github" target="_blank" rel="noopener">GitHub</a>
+    <a href="#" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+  </aside>
+  <div class="scroll-cue"><span>scroll</span><i></i></div>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <svg class="deco d1" data-speed="30"><use href="#star"/></svg>
+      <svg class="deco d2" data-speed="-20"><use href="#star"/></svg>
+      <svg class="deco d3" data-speed="15"><use href="#ring"/></svg>
+
+      <p class="small">&gt; hello, i am</p>
+      <h1 class="glitch" data-text="BRYAN A RAMIREZ">BRYAN A RAMIREZ</h1>
+      <p class="typed-line"><span id="typed"></span><span class="cursor">_</span></p>
+      <p class="badge"><i></i> Open to opportunities &middot; Phoenix, AZ</p>
+      <div class="buttons">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <h2>ABOUT <span>ME</span></h2>
+      <div class="about-grid">
+        <div class="photo-slot"><svg><use href="#star"/></svg><img src="photos/me.jpg" alt="Bryan A Ramirez" onerror="this.remove()"></div>
+        <div>
+          <p class="lead">I'm Bryan, a Computer Science student at Phoenix College, born and raised in Phoenix, Arizona, and a U.S. Marine Corps Reservist.</p>
+          <p>I want to be a software engineer, and I learn by building. This site and the projects on my GitHub are me doing exactly that.
+          Marine Corps Reserve training gave me discipline and reliability, and I bring both to everything I work on.</p>
+          <p>I'm really into tech, from how software works to the tools people build with it. I'm open to any opportunity (internships, jobs, projects) where I can contribute, learn fast, and keep leveling up.</p>
+
+          <ul class="facts">
+            <li><b>Based in</b> Phoenix, Arizona</li>
+            <li><b>Studying</b> Computer Science, Phoenix College</li>
+            <li><b>Service</b> U.S. Marine Corps Reserve</li>
+            <li><b>Looking for</b> Any opportunity, incl. Summer 2027 internships</li>
+          </ul>
+
+          <h3>SKILLS</h3>
+          <div class="skills">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Java</span><span>Git</span><span>GitHub</span><span>VS Code</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="block-title">WHAT I BRING</h3>
+      <div class="bring">
+        <div class="mini"><b>Discipline</b><p>Marine Corps Reserve training: show up, follow through, finish the job.</p></div>
+        <div class="mini"><b>Fast learner</b><p>Started coding from zero and now I'm building and publishing projects on GitHub.</p></div>
+        <div class="mini"><b>Creative eye</b><p>Photography and design sense, which shows up in how I build interfaces.</p></div>
+      </div>
+
+      <h3 class="block-title">OUTSIDE THE CODE</h3>
+      <div class="interests">
+        <div class="mini"><span class="spark">✦</span><b>Music</b><p>Top 3 genres:</p>
+          <div class="chips"><span>Jazz</span><span>Electronic</span><span>Indie Pop</span></div>
+        </div>
+        <div class="mini"><span class="spark">✦</span><b>Photography</b><p>Framing the world through a lens. Check the gallery below.</p></div>
+        <div class="mini"><span class="spark">✦</span><b>Tech</b><p>Gadgets, software, and how it all works.</p></div>
+        <div class="mini"><span class="spark">✦</span><b>Reading</b><p>Always learning something new.</p></div>
+        <div class="mini"><span class="spark">✦</span><b>Gaming</b><p>Strategy, problem solving, and good company.</p></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS: script.js replaces these placeholder cards with your real GitHub repos -->
+    <section id="projects" class="section reveal">
+      <h2>PROJECT <span>RECAP</span></h2>
+      <div class="grid" id="repo-grid">
+        <article class="card">
+          <span class="num">01</span>
+          <h3>Java GUI App</h3>
+          <p>Small pet project built while learning Java.</p>
+          <a href="#" data-link="github" target="_blank" rel="noopener">view code →</a>
+        </article>
+        <article class="card">
+          <span class="num">02</span>
+          <h3>This Portfolio</h3>
+          <p>Designed and coded from scratch with HTML, CSS and JavaScript.</p>
+          <a href="#" data-link="github" target="_blank" rel="noopener">view code →</a>
+        </article>
+        <article class="card dim">
+          <span class="num">03</span>
+          <h3>Loading...</h3>
+          <p>Your latest GitHub repos show up here automatically.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section id="photos" class="section reveal">
+      <h2>PHOTO <span>GALLERY</span></h2>
+      <p class="note">Shot by me. Click a photo to enlarge.</p>
+      <div class="gallery">
+        <figure><svg><use href="#star"/></svg><img src="photos/photo1.jpg" alt="Times Square at night, a Canon camera in the foreground" loading="lazy" onerror="this.remove()"></figure>
+        <figure><svg><use href="#star"/></svg><img src="photos/photo2.jpg" alt="Looking up at skyscrapers and billboards in Times Square" loading="lazy" onerror="this.remove()"></figure>
+        <figure><svg><use href="#star"/></svg><img src="photos/photo3.jpg" alt="Street scene with a racing jacket in the foreground" loading="lazy" onerror="this.remove()"></figure>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+      <h2>CONTACT <span>ME</span></h2>
+      <div class="contact-box">
+        <p>Open to any opportunity: internships, jobs, projects, collabs. Let's talk.</p>
+        <a class="email" href="#" data-link="email">email</a>
+        <div class="buttons">
+          <a class="btn" href="#" data-link="github" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="#" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+          <!-- Discord has no direct link for usernames, so this button copies it to your clipboard -->
+          <button class="btn ghost" id="discord-btn" type="button">Discord</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Bryan A Ramirez &middot; Phoenix, AZ</footer>
+
+  <!-- click-to-enlarge overlay for photos -->
+  <div class="lightbox" id="lightbox"><img alt="Enlarged photo"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
